@@ -6,7 +6,7 @@
 #    By: nbyrd <nbyrd>                              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 13:40:18 by nbyrd             #+#    #+#              #
-#    Updated: 2022/07/06 16:55:37 by nbyrd            ###   ########.fr        #
+#    Updated: 2022/07/06 17:23:54 by nbyrd            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,8 @@ LIST = ft_pointer.c ft_printf.c \
 	   ft_int.c ft_putnbr_fd.c ft_unsigned_decimal.c \
 	   ft_parse.c ft_putnbr_pointer.c \
 
+MAIN = main.c
+OUT = test
 OBJ = $(patsubst %.c,%.o,$(LIST))
 
 CFLAGS = -Wall -Wextra -Werror
@@ -37,5 +39,9 @@ clean :
 	@rm -f $(OBJ)
 fclean : clean
 	@rm -f $(NAME)
+	@rm -f $(OUT)
+
+test : all
+	$(GCC) $(MAIN) $(NAME) -o $(OUT)
 re : fclean all
 .PHONY : all clean fclean re
